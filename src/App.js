@@ -1,31 +1,27 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import './App.css';
+import React from "react";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
-import HomePage from './Home/HomePage';
-import About from './About/About';
-import Work from './Work/Work';
-import Contact from './Contact/Contact';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
+import HomePage from "./Home/HomePage";
+import Work from "./Work/Work";
+import About from "./About/About";
+import Contact from "./Contact/Contact";
 
 function App() {
   return (
-    <Router basename="/hacker-camerawork">
-      <div className="portfolio-container">
-        <Navbar />
+    <Router>
+      <Navbar />
 
-        <main>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
-        </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/work" element={<Work />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
-        <Footer />
-      </div>
+      <Footer />
     </Router>
   );
 }

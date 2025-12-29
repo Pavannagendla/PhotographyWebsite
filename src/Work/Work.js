@@ -180,6 +180,11 @@ import Food13 from "./Food/Food13.jpg";
 import Mrng2 from "./Nature/Mrng2.jpg";
 import Mrng1 from "./Nature/Mrng1.jpg";
 import flower1 from "./Nature/flower1.jpg";
+import flower2 from "./Nature/flower2.jpg";
+import flower3 from "./Nature/flower3.jpg";
+import sun from "./Nature/sun.jpg";
+import view from "./Nature/view.jpg";
+import green from "./Nature/green.jpg";
 
 
 /* ===============================
@@ -355,7 +360,12 @@ const photoData = [
   { src: guruvayoor2, category: "Portraits" },
   { src: Dragonfly, category: "Birds" },
   { src: Food9, category: "Food" },
-  { src: Mrng2, category: "Nature" }
+  { src: Mrng2, category: "Nature" },
+  { src: sun, category: "Nature" },
+  { src: view, category: "Nature" },
+  { src: flower2, category: "Nature" },
+  { src: flower3, category: "Nature" },
+  { src: green, category: "Nature" }
 
 
 ];
