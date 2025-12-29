@@ -1,0 +1,187 @@
+/* ===============================
+   PAGE CONTAINER
+================================ */
+.work-container {
+  background: #fff;
+  color: #111;
+  min-height: 100vh;
+  padding: 50px 25px;
+}
+
+/* ===============================
+   HEADER POLISH
+================================ */
+.work-header {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.work-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.work-subtitle {
+  font-size: 1.15rem;
+  color: #777;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 6px;
+  animation: subtitleFade 0.35s ease;
+}
+
+@keyframes subtitleFade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-line {
+  width: 90px;
+  height: 3px;
+  margin: 18px auto 0;
+  background: linear-gradient(90deg, #111, #666);
+  border-radius: 10px;
+  animation: lineGrow 0.4s ease;
+}
+
+@keyframes lineGrow {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 90px;
+    opacity: 1;
+  }
+}
+
+/* ===============================
+   FILTER BUTTONS
+================================ */
+.work-filters {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 35px;
+}
+
+.work-filters button {
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.work-filters button:hover,
+.work-filters .active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+/* ===============================
+   MASONRY GALLERY
+================================ */
+.work-gallery {
+  column-count: 3;
+  column-gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+/* ===============================
+   IMAGE CARD – MINIMAL HOVER
+================================ */
+.work-card {
+  position: relative;
+  break-inside: avoid;
+  margin-bottom: 28px;
+  border-radius: 16px;
+  overflow: hidden;
+
+  /* Soft default shadow */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.work-card img {
+  width: 100%;
+  display: block;
+
+  transition: transform 0.45s ease,
+              filter 0.45s ease;
+}
+
+/* Hover: soft lift */
+.work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* Hover: gentle zoom + slight darkening */
+.work-card:hover img {
+  transform: scale(1.04);
+  filter: brightness(0.9);
+}
+
+/* ===============================
+   SOFT DARK OVERLAY (NO TEXT)
+================================ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.18);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.work-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 1024px) {
+  .work-gallery {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .work-gallery {
+    column-count: 1;
+  }
+
+  /* Disable hover effects on mobile */
+  .work-card:hover {
+    transform: none;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  .work-card:hover img {
+    transform: none;
+    filter: none;
+  }
+
+  .overlay {
+    display: none;
+  }
+
+  .work-header h1 {
+    font-size: 2.2rem;
+  }
+}

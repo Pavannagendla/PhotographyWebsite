@@ -1,0 +1,217 @@
+/* ================================
+   Recognition Section
+================================ */
+
+.recognition-section {
+  padding: 4rem 1.5rem;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.recognition-section h2 {
+  font-size: 2.6rem;
+  color: #111;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.section-subtitle {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ================================
+   Slider
+================================ */
+
+.achievements-slider {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.achievements-slider .slick-slide > div {
+  padding: 0 12px;
+}
+
+/* ================================
+   Achievement Card
+================================ */
+
+.achievement-card {
+  position: relative;
+  height: 420px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+/* Image Layer */
+.achievement-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--image-url);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* Desktop Hover */
+.achievement-card:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ================================
+   Card Content
+================================ */
+
+.card-inner {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 1.75rem;
+  text-align: left;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* Badge */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #0070f3;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Title */
+.card-inner h4 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.9rem;
+  position: relative;
+}
+
+.card-inner h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 40%;
+  background: linear-gradient(90deg, #0070f3, #00c2ff);
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+.achievement-card:hover .card-inner h4::after {
+  width: 100%;
+}
+
+/* Description */
+.card-inner p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 14px;
+}
+
+/* Hide text on desktop hover */
+.achievement-card:hover .card-inner {
+  opacity: 0;
+  transform: translateY(12px);
+  visibility: hidden;
+}
+
+/* ================================
+   Slick Dots
+================================ */
+
+.slick-dots {
+  bottom: -35px;
+}
+
+.slick-dots li button:before {
+  font-size: 10px;
+  color: #aaa;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #0070f3;
+  transform: scale(1.2);
+}
+
+/* ================================
+   Mobile & Tablet
+================================ */
+
+@media (max-width: 768px) {
+  .recognition-section {
+    padding: 3rem 1rem;
+  }
+
+  .recognition-section h2 {
+    font-size: 2rem;
+  }
+
+  .achievement-card {
+    height: 300px;
+  }
+
+  /* Image always visible */
+  .achievement-card::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Text overlay */
+  .card-inner {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.15)
+    );
+    color: #fff;
+    padding: 1.5rem;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .card-inner h4,
+  .card-inner p {
+    color: #fff;
+  }
+
+  .badge {
+    color: #00c2ff;
+  }
+
+  .card-inner h4::after {
+    background: linear-gradient(90deg, #00c2ff, #ffffff);
+  }
+
+  .achievement-card:hover .card-inner {
+    opacity: 1;
+    visibility: visible;
+  }
+}

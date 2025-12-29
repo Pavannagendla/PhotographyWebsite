@@ -1,0 +1,79 @@
+/* --- Story Section Layout --- */
+.story-layout {
+  display: flex;
+  align-items: flex-start; /* Aligns items to the top */
+  gap: 40px;
+  margin-top: 40px;
+  text-align: left;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Story Image Container --- */
+.story-image {
+  flex: 0 0 320px; /* The image container won't grow but can shrink, with a base width */
+  position: relative; /* Needed for positioning the "year" banner */
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  display: block; /* Removes any bottom spacing */
+  border-radius: 12px; /* Matches the container's border-radius */
+}
+
+/* --- "Year of Service" Banner --- */
+.year-of-service {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+/* --- Story Text Content --- */
+.story-text {
+  flex: 1; /* Allows the text block to fill the remaining space */
+}
+
+.story-text h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.story-text p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+  .story-layout {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .story-image {
+    width: 100%;
+    max-width: 400px; /* Prevents the image from being too wide on tablets */
+  }
+
+  /* Keep paragraphs left-aligned for readability even when the layout is centered */
+  .story-text {
+    text-align: left;
+  }
+}

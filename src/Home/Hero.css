@@ -1,0 +1,100 @@
+/* --- Hero Content Section --- */
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    margin: 50px auto;
+    gap: 20px;
+  }
+  
+  .text-section {
+    flex: 1;
+  }
+  
+  .content h1 {
+    font-size: 68px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .content h3 {
+    font-size: 18px;
+    color: #ccc;
+  }
+  
+  .content p a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .content p a:hover {
+    color: #009688;
+  }
+  
+  .image-section {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .image-section img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+  }
+  
+  .image-section img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* --- General Button Style --- */
+  .styled-button {
+    width: 120px;
+    padding: 10px 0;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Ensure button text is above the span */
+  }
+  
+  .styled-button span {
+    background: #009688;
+    height: 100%;
+    width: 0;
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: width 0.5s;
+  }
+  
+  .styled-button:hover span {
+    width: 100%;
+  }
+  
+  /* --- Responsive Design --- */
+  @media only screen and (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .image-section {
+      display: none; /* Hiding creator image on mobile for simplicity */
+    }
+    
+    .content h1 {
+      font-size: 36px;
+    }
+  }

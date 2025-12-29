@@ -1,0 +1,26 @@
+.instagram-carousel {
+    margin-top: 60px;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  
+  .instagram-carousel h3 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333;
+  }
+  
+  .instagram-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .instagram-slide img:hover {
+    transform: scale(1.05);
+  }
+  

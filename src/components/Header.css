@@ -1,0 +1,48 @@
+/* --- Header Styles --- */
+.main-header {
+    background-color: #f7f7f7;
+    color: #7e8597;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  }
+  
+  .header-left, .header-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .header-left li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 14px;
+  }
+  
+  .header-left a {
+    color: #7e8597;
+    text-decoration: none;
+  }
+  
+  .header-right a {
+    color: #7e8597;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 20px;
+  }
+  
+  /* --- Responsive Design --- */
+  @media only screen and (max-width: 768px) {
+    .header-left, .header-right {
+      width: 100%;
+      justify-content: center;
+      margin: 10px 0;
+    }
+  }

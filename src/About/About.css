@@ -1,0 +1,20 @@
+lhijblbjlkkb  k/* src/App.css */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+/* Responsive Design Fallbacks */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}

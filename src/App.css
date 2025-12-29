@@ -1,0 +1,17 @@
+/* --- Global & Body Styles --- */
+body {
+  margin: 0;
+  font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font */
+  background-color: #ffffff; /* A clean white background */
+  color: #333; /* Dark grey text for readability */
+}
+
+.portfolio-container {
+  max-width: 1600px; /* Limit the max width for better layouts on large screens */
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+main {
+  padding-top: 30px; /* Add padding to prevent content from hiding under the fixed navbar */
+}
