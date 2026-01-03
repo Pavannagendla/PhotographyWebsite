@@ -47,7 +47,7 @@ h1, h2 {
 ========================= */
 .hero {
   height: 100vh;
-  background: url("/public/Images/Wildlife/tiger1.jpg") center/cover no-repeat;
+  background: url("/public/Images/Instagram/tiger1.jpg") center/cover no-repeat;
   position: relative;
 }
 

@@ -7,10 +7,10 @@ import "./Home.css";
    FEATURED WORK IMAGES
 ========================= */
 const featuredImages = [
-  "/Images/Wildlife/tiger1.jpg",
-  "/Images/Street/7.jpg",
-  "/Images/Portraits/mithwa 2.jpg",
-  "/Images/Nature/Mrng2.jpg",
+  "/Images/Instagram/gardenlizard5.jpg",
+  "/Images/Instagram/street22.jpg",
+  "/Images/Instagram/mithwa 2.jpg",
+  "/Images/Instagram/Mrng2.jpg",
 ];
 
 /* =========================
@@ -45,7 +45,7 @@ const Home = () => {
       ========================== */}
       <motion.section
         className="hero"
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/Wildlife/tiger1.jpg'})` }}
+        style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/Images/Instagram/tiger1.jpg'})` }}
         initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2.5, ease: "easeOut" }}
