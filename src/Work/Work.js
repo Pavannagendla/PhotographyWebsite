@@ -54,9 +54,6 @@ import gardenlizard4 from "./Wildlife/gardenlizard4.jpg";
 import gardenlizard5 from "./Wildlife/gardenlizard5.jpg";
 import dog1 from "./Wildlife/dog1.jpg";
 import dog2 from "./Wildlife/dog2.jpg";
-
-
-
 import bird1 from "./Birds/3.jpg";
 import bird2 from "./Birds/4.jpg";
 import bird3 from "./Birds/5.jpg";
@@ -190,7 +187,7 @@ import green from "./Nature/green.jpg";
 /* ===============================
    PHOTO DATA
 ================================ */
-const photoData = [
+export const photoData = [
   { src: lion1, category: "Wildlife" },
   { src: tiger1, category: "Wildlife" },
   { src: bhima, category: "Portraits" },

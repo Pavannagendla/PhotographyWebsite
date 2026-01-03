@@ -8,6 +8,7 @@ import HomePage from "./Home/HomePage";
 import Work from "./Work/Work";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
+import CombinedPage from "./Common/CombinedPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/overview" element={<CombinedPage />} />
         <Route path="/work" element={<Work />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />

@@ -72,6 +72,9 @@ const Navbar = () => {
             <NavLink to="/work" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Work</NavLink>
           </li>
           <li>
+            <NavLink to="/overview" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Portfolio</NavLink>
+          </li>
+          <li>
             <NavLink to="/about" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>About</NavLink>
           </li>
           <li>

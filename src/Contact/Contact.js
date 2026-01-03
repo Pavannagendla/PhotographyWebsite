@@ -11,16 +11,17 @@ import image6 from "../images/evening1.JPG";
 
 const images = [image1, image2, image3, image4, image5, image6];
 
-const Contact = () => {
+const Contact = ({ showImages = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    if (!showImages) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, 7000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [showImages]);
 
   return (
     <main className="contact-wrapper">
@@ -55,17 +56,19 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Right Slideshow */}
-      <section className="contact-slideshow">
-        {images.map((img, index) => (
-          <img
-            key={index}
-            src={img}
-            alt={`Slide ${index}`}
-            className={index === currentIndex ? "active" : ""}
-          />
-        ))}
-      </section>
+      {/* Right Slideshow (optional) */}
+      {showImages && (
+        <section className="contact-slideshow">
+          {images.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`Slide ${index}`}
+              className={index === currentIndex ? "active" : ""}
+            />
+          ))}
+        </section>
+      )}
     </main>
   );
 };

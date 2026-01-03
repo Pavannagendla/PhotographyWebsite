@@ -8,9 +8,9 @@ import "./Home.css";
 ========================= */
 const featuredImages = [
   "/Images/Instagram/gardenlizard5.jpg",
-  "/Images/Instagram/street22.jpg",
+  "/Images/Instagram/street25.jpg",
   "/Images/Instagram/mithwa 2.jpg",
-  "/Images/Instagram/Mrng2.jpg",
+  "/Images/Instagram/green.jpg",
 ];
 
 /* =========================
