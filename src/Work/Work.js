@@ -10,6 +10,7 @@ import greylangur2 from "./Wildlife/Greylangur (2).jpg";
 import greylangur3 from "./Wildlife/Greylangur (3).jpg";
 import gaintsquirrel from "./Wildlife/gaintsquirrel.jpg";
 import nilgiri1 from "./Wildlife/nilgiri (1).jpg";
+import tiger1 from "./Wildlife/tiger1.jpg";
 import tiger2 from "./Wildlife/tiger2.jpg";
 import tiger3 from "./Wildlife/tiger3.jpg";
 import wildsquirrel from "./Wildlife/wildsquirrel.jpg";
