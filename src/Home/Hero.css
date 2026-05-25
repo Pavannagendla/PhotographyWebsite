@@ -1,100 +1,261 @@
-/* --- Hero Content Section --- */
-.content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 85%;
-    margin: 50px auto;
-    gap: 20px;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400&family=Inter:wght@200;300;400;600&display=swap');
+
+/* ── MAIN HERO STAGE ── */
+.exhibition-hero-canvas {
+  position: relative;
+  background-color: #0a0a0c; /* Uniform dark mode background */
+  color: #ffffff;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 80px 80px 80px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Light Table Technical Matrix Grid Layout */
+.hero-matrix-underlay {
+  position: absolute;
+  inset: 0;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-asymmetric-wrapper {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  align-items: center;
+}
+
+/* ── LEFT CONTAINER: DISPLAY TEXT ── */
+.hero-text-manifesto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-mono-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: #c4a468; /* Elegant muted amber gold signature hue */
+  display: block;
+  margin-bottom: 24px;
+}
+
+.hero-main-serif-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5.5rem;
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 36px 0;
+  text-transform: uppercase;
+}
+
+.hero-main-serif-title span {
+  display: block;
+  font-weight: 300;
+  color: #f3f4f6;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: -0.01em;
+}
+
+/* Metadata Subheadings */
+.hero-social-announcement {
+  border-left: 1px solid #1c1c24;
+  padding-left: 24px;
+  margin-bottom: 48px;
+}
+
+.announcement-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #636375;
+  margin: 0 0 8px 0;
+}
+
+.hashtag-link-wrapper a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hashtag-link-wrapper a:hover {
+  color: #c4a468;
+}
+
+/* Asymmetric Luxury Button */
+.luxury-action-trigger {
+  background: transparent;
+  border: 1px solid #1c1c24;
+  color: #ffffff;
+  padding: 16px 32px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-action-trigger::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-color: #ffffff;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  z-index: 1;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.luxury-action-trigger:hover::before {
+  transform: scaleY(1);
+}
+
+.luxury-action-trigger:hover {
+  color: #0a0a0c;
+  border-color: #ffffff;
+}
+
+.luxury-action-trigger .action-txt,
+.luxury-action-trigger .action-arrow {
+  position: relative;
+  z-index: 2;
+}
+
+.luxury-action-trigger .action-arrow {
+  transition: transform 0.3s ease;
+}
+
+.luxury-action-trigger:hover .action-arrow {
+  transform: translateX(6px);
+}
+
+/* ── RIGHT CONTAINER: PORTRAIT CARRIER ── */
+.hero-visual-anchor {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.hero-image-scaffold-frame {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4; /* Classic professional portrait layout ratio */
+}
+
+/* Behind Ghost Outline Accent Track Overlay */
+.hero-frame-ghost-outline {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #c4a468;
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image-scaffold-frame:hover .hero-frame-ghost-outline {
+  transform: translate(6px, 6px);
+}
+
+.hero-img-bounding-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid #14141c;
+}
+
+.hero-img-bounding-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%) contrast(102%) brightness(0.95);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-image-scaffold-frame:hover img {
+  transform: scale(1.03);
+}
+
+.hero-chromatic-lens-tint {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 12, 0.4) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* ── COMPACT RESPONSIVE MEDIA ADAPTATIONS ── */
+@media (max-width: 1200px) {
+  .exhibition-hero-canvas {
+    padding: 120px 40px 60px 40px;
   }
-  
-  .text-section {
-    flex: 1;
+  .hero-main-serif-title {
+    font-size: 4.2rem;
   }
-  
-  .content h1 {
-    font-size: 68px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  .hero-asymmetric-wrapper {
+    gap: 40px;
   }
-  
-  .content h3 {
-    font-size: 18px;
-    color: #ccc;
-  }
-  
-  .content p a {
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .content p a:hover {
-    color: #009688;
-  }
-  
-  .image-section {
-    flex: 1;
-    text-align: right;
-  }
-  
-  .image-section img {
-    width: 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-  }
-  
-  .image-section img:hover {
-    transform: scale(1.1);
-  }
-  
-  /* --- General Button Style --- */
-  .styled-button {
-    width: 120px;
-    padding: 10px 0;
+}
+
+@media (max-width: 900px) {
+  .hero-asymmetric-wrapper {
+    grid-template-columns: 100%;
+    gap: 60px;
     text-align: center;
-    margin: 20px 0;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #009688;
-    background: transparent;
-    color: #fff;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    z-index: 1; /* Ensure button text is above the span */
   }
-  
-  .styled-button span {
-    background: #009688;
-    height: 100%;
-    width: 0;
-    border-radius: 25px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: -1;
-    transition: width 0.5s;
+  .hero-text-manifesto {
+    align-items: center;
   }
-  
-  .styled-button:hover span {
-    width: 100%;
+  .hero-social-announcement {
+    border-left: none;
+    border-top: 1px solid #1c1c24;
+    padding-left: 0;
+    padding-top: 20px;
+    max-width: 280px;
   }
-  
-  /* --- Responsive Design --- */
-  @media only screen and (max-width: 768px) {
-    .content {
-      flex-direction: column;
-      text-align: center;
-    }
-  
-    .image-section {
-      display: none; /* Hiding creator image on mobile for simplicity */
-    }
-    
-    .content h1 {
-      font-size: 36px;
-    }
+  .hero-visual-anchor {
+    justify-content: center;
+    order: -1; /* Gracefully stacks the photograph layout block cleanly over text parameters on small views */
   }
+  .hero-image-scaffold-frame {
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 500px) {
+  .exhibition-hero-canvas {
+    padding: 100px 20px 40px 20px;
+  }
+  .hero-main-serif-title {
+    font-size: 3rem;
+  }
+}

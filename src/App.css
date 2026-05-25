@@ -1,17 +1,59 @@
-/* --- Global & Body Styles --- */
-body {
+/* ==========================================================================
+   ── APP WIDE PRODUCTION CORE ARCHITECTURE ──
+   ========================================================================== */
+
+html, body {
   margin: 0;
-  font-family: 'Helvetica Neue', Arial, sans-serif; /* Modern, clean font */
-  background-color: #ffffff; /* A clean white background */
-  color: #333; /* Dark grey text for readability */
+  padding: 0;
+  background-color: #0a0a0c !important; /* Uniform uncompromised black base background across compilation engines */
+  color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
-.portfolio-container {
-  max-width: 1600px; /* Limit the max width for better layouts on large screens */
-  margin: 0 auto;
-  padding: 0 2rem;
+/* ── MASTER VIEWPORT CONTAINER FRAME ── */
+.portfolio-master-frame {
+  width: 100%;
+  min-height: calc(100vh - 48px); /* Accurately accounts for top utility ribbon footprint */
+  box-sizing: border-box;
+  background-color: #0a0a0c;
+  
+  /* 
+     Critical layout buffer spacing padding:
+     48px (Top Utility Ribbon Height) + 90px (Initial Lens Navbar Height) = 138px
+     This keeps your hero text parameters perfectly visible below the HUD lines instantly.
+  */
+  padding-top: 138px; 
 }
 
-main {
-  padding-top: 30px; /* Add padding to prevent content from hiding under the fixed navbar */
+/* Custom Uniform selection highlighter tool styling */
+::selection {
+  background-color: #c4a468;
+  color: #0a0a0c;
+}
+
+/* Smooth custom web scrollbars across modern browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+::-webkit-scrollbar-thumb {
+  background: #14141a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c4a468;
+}
+
+/* ==========================================================================
+   ── RESPONSIVE COMPACT MEDIA ADAPTATIONS ──
+   ========================================================================== */
+@media (max-width: 650px) {
+  .portfolio-master-frame {
+    /* 48px (Utility ribbon lock structural offset) + 70px mobile header parameter height */
+    padding-top: 118px;
+  }
 }

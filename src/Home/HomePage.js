@@ -1,14 +1,14 @@
-import React from 'react'
-import Home from './Home'
+import React from 'react';
+import Home from './Home';
 
 const HomePage = () => {
   return (
-    <div className='home-photos'>
-      <main>
+    <div className="portfolio-home-page">
+      <main className="home-main-content">
         <Home />
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

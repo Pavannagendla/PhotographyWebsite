@@ -1,112 +1,328 @@
-/* --- Basic Page Setup --- */
-* {
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;600&display=swap');
+
+/* ── INTERACTIVE WORKSPACE ROOT ── */
+.darkroom-workspace {
+  position: relative;
+  background-color: #050507;
+  color: #ffffff;
+  padding: 120px 80px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background-color: #ffffff;
-  color: #000000;
+/* Technical Blueprint Grid Background */
+.darkroom-grid-lines {
+  position: absolute;
+  inset: 0;
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  pointer-events: none;
 }
 
-/* --- Section Container --- */
-.about-section {
-  text-align: center;
-  padding: 1rem 1rem 2rem 1rem;
-}
-
-.about-section h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-}
-
-/* --- Photo Grid Styles --- */
-.photo-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px 0;
-  max-width: 1200px;
+.darkroom-layout {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 60px;
+  max-width: 1440px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-.photo-grid:hover .photo-card {
-  filter: blur(0.1px);
-  opacity: 0.6;
+/* ── LEFT PANEL: ARCHIVE & STRIPS ── */
+.darkroom-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.photo-card {
-  width: 240px;
-  aspect-ratio: 3 / 4;
-  border-radius: 10px;
-  overflow: hidden;
+.darkroom-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #c4a468;
+}
+
+.darkroom-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 16px 0 24px 0;
+}
+
+.darkroom-title em {
+  font-style: italic;
+  font-weight: 300;
+  color: #f3f4f6;
+}
+
+.darkroom-explanation {
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #8e8e93;
+  max-width: 480px;
+  margin: 0 0 48px 0;
+}
+
+/* ── PHYSICAL FILM STRIP SYSTEM ── */
+.film-strip-carrier {
+  background-color: #0d0d12;
+  border: 1px solid #1a1a24;
+  padding: 20px 0;
+  position: relative;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+/* Sprocket Tracks */
+.film-sprocket-track {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+}
+.film-sprocket-track.top { margin-bottom: 16px; }
+.film-sprocket-track.bottom { margin-top: 16px; }
+
+.sprocket-hole {
+  width: 14px;
+  height: 20px;
+  background-color: #050507;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Horizontal Scroll Container */
+.film-frames-scroll {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 10px 20px;
+  scrollbar-width: none;
+}
+.film-frames-scroll::-webkit-scrollbar { display: none; }
+
+.film-frame-cell {
+  flex: 0 0 130px;
+  aspect-ratio: 1 / 1;
+  background-color: #08080a;
+  border: 1px solid #22222e;
+  padding: 14px 6px 6px 6px;
+  box-sizing: border-box;
+  position: relative;
   cursor: pointer;
-  border: 3px solid #444;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.photo-grid .photo-card:hover {
-  transform: scale(1.05);
-  border-color: #009688;
-  filter: blur(0);
-  opacity: 1;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.frame-edge-id {
+  position: absolute;
+  top: 3px; left: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: #444453;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.photo-card img {
+.frame-image-bounding {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.frame-image-bounding img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.3;
+  filter: sepia(30%) contrast(110%) grayscale(20%);
+  transition: all 0.4s ease;
 }
 
-/* --- Modal Styles --- */
-.photo-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+/* Active Framework Intersections */
+.film-frame-cell:hover .frame-image-bounding img,
+.film-frame-cell.is-selected .frame-image-bounding img {
+  opacity: 0.9;
+  filter: sepia(0%) contrast(100%) grayscale(0%);
+}
+
+.film-frame-cell.is-selected {
+  border-color: #c4a468;
+  background-color: #12121a;
+  transform: scale(1.02);
+}
+
+.film-frame-cell.is-selected .frame-edge-id {
+  color: #c4a468;
+}
+
+/* ── RIGHT PANEL: THE LENS LOUPE CONSOLE ── */
+.darkroom-projection-console {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10000;
 }
 
-.photo-modal img.modal-img {
-  max-width: 90%;
-  max-height: 85%;
-  border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+.lens-loupe-device {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid #1a1a26;
+  background-color: #07070a;
+  padding: 36px;
+  box-sizing: border-box;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.7), 
+              inset 0 0 60px rgba(196, 164, 104, 0.03);
 }
 
-.photo-modal .close-btn {
+/* Viewfinder UI HUD Elements */
+.loupe-reticle {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #fff;
-  cursor: pointer;
-  transition: transform 0.2s;
+  font-family: 'DM Mono', monospace;
+  color: rgba(196, 164, 104, 0.3);
+  pointer-events: none;
+  z-index: 5;
 }
 
-.photo-modal .close-btn:hover {
-  transform: scale(1.2);
-  color: #ff5252;
+.loupe-reticle.crosshair {
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: 200;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-  .photo-card {
-    width: calc(50% - 20px);
+.loupe-reticle.corner {
+  width: 14px; height: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.loupe-reticle.tl { top: 60px; left: 60px; border-right: none; border-bottom: none; }
+.loupe-reticle.tr { top: 60px; right: 60px; border-left: none; border-bottom: none; }
+.loupe-reticle.bl { bottom: 100px; left: 60px; border-right: none; border-top: none; }
+.loupe-reticle.br { bottom: 100px; right: 60px; border-left: none; border-top: none; }
+
+/* Dynamic EXIF Labels */
+.loupe-exif-overlay {
+  position: absolute;
+  top: 45px;
+  width: calc(100% - 72px);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  z-index: 5;
+}
+
+.exif-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  color: #c4a468;
+  background-color: rgba(13, 13, 18, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 4px 10px;
+  border: 1px solid rgba(196, 164, 104, 0.15);
+}
+
+/* Core Circular Screen */
+.loupe-projection-chamber {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #14141c;
+  z-index: 2;
+}
+
+.loupe-projected-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+
+/* Optics Vignette Mask Layer */
+.loupe-chromatic-aberration {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 35%, rgba(5, 5, 7, 0.85) 85%, #050507 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Glass Surface Sheen Reflection */
+.loupe-glass-glare {
+  position: absolute;
+  inset: 36px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 50%, rgba(255, 255, 255, 0.01) 100%);
+  z-index: 4;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Sub-caption Layer */
+.loupe-caption-drawer {
+  position: absolute;
+  bottom: 45px;
+  width: calc(100% - 100px);
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 5;
+}
+
+.loupe-caption-drawer p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #8e8e93;
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.9);
+}
+
+/* Focal Capture Shutter Transition Animation */
+.animate-lens-focus {
+  animation: cameraShutterSnap 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cameraShutterSnap {
+  0% {
+    transform: scale(1.12);
+    filter: blur(12px) contrast(80%);
+    opacity: 0.4;
+  }
+  40% {
+    filter: blur(2px) contrast(110%);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px) contrast(100%);
+    opacity: 1;
   }
 }
 
-@media (max-width: 480px) {
-  .photo-card {
-    width: 90%;
-  }
+/* ── STUDIO DISPLAY ADAPTATIONS ── */
+@media (max-width: 1200px) {
+  .darkroom-workspace { padding: 100px 40px; }
+  .darkroom-layout { grid-template-columns: 100%; gap: 60px; }
+  .darkroom-title { font-size: 3.4rem; }
+  .lens-loupe-device { margin: 0 auto; }
+}
+
+@media (max-width: 600px) {
+  .darkroom-workspace { padding: 60px 20px; }
+  .darkroom-title { font-size: 2.6rem; }
+  .lens-loupe-device { max-width: 100%; aspect-ratio: 1 / 1; padding: 20px; }
+  .loupe-reticle.tl, .loupe-reticle.tr { top: 45px; }
+  .loupe-reticle.bl, .loupe-reticle.br { bottom: 80px; }
+  .loupe-exif-overlay { top: 30px; }
+  .loupe-caption-drawer { bottom: 30px; }
 }

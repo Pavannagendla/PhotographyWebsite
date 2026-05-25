@@ -1,110 +1,237 @@
-.photo-modal {
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;600&display=swap');
+
+/* ── IMMERSIVE FULL-SCREEN OVERLAY ── */
+.darkroom-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-left {
-  flex: 1.2;
+  inset: 0;
+  background-color: rgba(5, 5, 7, 0.98); /* Almost total blackout to highlight capture colors */
+  backdrop-filter: blur(12px);
+  z-index: 100000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem 2rem 2rem;
+  padding-top: 48px; /* Safe buffer room underneath top HUD indicator */
+  box-sizing: border-box;
+  animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.modal-left img {
+/* Minimalist Overhead Status Bar */
+.modal-hud-header {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 48px;
+  border-bottom: 1px solid #14141a;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #555566;
+  z-index: 100002;
+}
+
+.hud-close-trigger {
+  background: transparent;
+  border: none;
+  color: #8e8e93;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  transition: color 0.3s ease;
+}
+.hud-close-trigger:hover { color: #c4a468; }
+
+/* ── MODAL SPLIT DECK CONTENT ── */
+.modal-split-deck {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  width: 100%;
+  height: calc(100vh - 48px);
+  max-width: 100%;
+  background-color: transparent;
+}
+
+/* Left Chamber: Display Focus Canvas */
+.modal-lens-chamber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  background-color: #050507;
+}
+
+.lens-canvas-wrapper {
+  position: relative;
   max-width: 95%;
-  max-height: 85vh;
-  border-radius: 16px;
-  box-shadow: 0 6px 32px rgba(0,0,0,0.18);
-  background: #fff;
+  height: 80vh;
+  aspect-ratio: auto;
+  border: 1px solid #14141c;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
 }
 
-.modal-right {
-  width: 32%;
-  min-width: 320px;
-  background: #fff;
-  padding: 2rem 1.5rem;
-  overflow-y: auto;
-  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.18);
+.lens-large-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.lens-chroma-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 60%, rgba(5, 5, 7, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Right Chamber: Technical Console Column */
+.modal-metadata-console {
+  background-color: #0b0b0f;
+  border-left: 1px solid #14141a;
+  padding: 48px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  border-radius: 0 16px 16px 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.modal-metadata-console::-webkit-scrollbar { display: none; }
+
+.console-mono-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #c4a468;
+  display: block;
+  margin-bottom: 12px;
 }
 
-.modal-right h3 {
-  margin-bottom: 1.2rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #222;
+.console-title-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.4rem;
+  font-weight: 300;
+  margin: 0 0 16px 0;
+  color: #ffffff;
 }
 
-.thumb-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin-bottom: 1.5rem;
+.console-explanation {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #8e8e93;
+  margin: 0 0 40px 0;
 }
 
-.thumb {
-  width: 80px;
-  height: 80px;
+/* ── CONTACT MATRIX GRID STRIPS ── */
+.console-thumbnail-matrix {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.console-thumb-cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background-color: #07070a;
+  border: 1px solid #1c1c24;
+  padding: 12px 4px 4px 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cell-num-label {
+  position: absolute;
+  top: 2px; left: 5px;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.5rem;
+  color: #444453;
+}
+
+.cell-image-bounding {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.cell-image-bounding img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  cursor: pointer;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  transition: border 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
 }
 
-.thumb.active {
-  border: 2px solid #007bff;
-  box-shadow: 0 4px 16px rgba(0,123,255,0.12);
+/* Active Thumbnail Frame States */
+.console-thumb-cell:hover .cell-image-bounding img,
+.console-thumb-cell.is-active .cell-image-bounding img {
+  opacity: 1;
 }
 
-.thumb:hover {
-  border: 2px solid #007bff;
-  box-shadow: 0 4px 16px rgba(0,123,255,0.12);
+.console-thumb-cell.is-active {
+  border-color: #c4a468;
+  background-color: #12121a;
+  transform: scale(1.03);
 }
 
-button {
+.console-thumb-cell.is-active .cell-num-label {
+  color: #c4a468;
+}
+
+/* Console Action Triggers */
+.console-footer-actions {
   margin-top: auto;
-  padding: 10px 24px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: background 0.2s;
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid #14141a;
 }
 
-button:hover {
-  background: #0056b3;
+.console-footer-actions .luxury-action-btn {
+  width: 100%;
+  justify-content: center;
 }
 
-/* Responsive Modal */
-@media (max-width: 900px) {
-  .photo-modal {
-    flex-direction: column;
-    align-items: flex-start;
+/* ── ANIMATIONS ── */
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── RESPONSIVE CONSOLE OVERRIDES ── */
+@media (max-width: 1100px) {
+  .modal-split-deck {
+    grid-template-columns: 100%;
+    height: auto;
+    overflow-y: auto;
   }
-  .modal-left, .modal-right {
-    width: 100%;
-    min-width: unset;
-    border-radius: 0;
-    padding: 1rem;
+  .modal-lens-chamber {
+    padding: 24px;
+    height: 60vh;
   }
-  .modal-right {
-    box-shadow: none;
+  .lens-canvas-wrapper {
+    height: 100%;
   }
+  .modal-metadata-console {
+    border-left: none;
+    border-top: 1px solid #14141a;
+    padding: 36px 24px;
+  }
+  .console-thumbnail-matrix {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-hud-header { padding: 0 20px; }
+  .modal-lens-chamber { height: 45vh; }
+  .console-title-serif { font-size: 1.9rem; }
 }

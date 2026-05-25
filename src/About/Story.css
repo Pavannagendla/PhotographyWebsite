@@ -1,79 +1,232 @@
-/* --- Story Section Layout --- */
-.story-layout {
-  display: flex;
-  align-items: flex-start; /* Aligns items to the top */
-  gap: 40px;
-  margin-top: 40px;
-  text-align: left;
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400&family=Inter:wght@200;300;400;500&display=swap');
+
+/* ── EDITORIAL CANVAS ROOT ── */
+.story-editorial-section {
+  position: relative;
+  background-color: #0a0a0c; /* Uniform premium deep portfolio canvas dark dark mode */
+  color: #ffffff;
+  padding: 140px 80px;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* --- Story Image Container --- */
-.story-image {
-  flex: 0 0 320px; /* The image container won't grow but can shrink, with a base width */
-  position: relative; /* Needed for positioning the "year" banner */
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-}
-
-.story-image img {
-  width: 100%;
-  height: auto;
-  display: block; /* Removes any bottom spacing */
-  border-radius: 12px; /* Matches the container's border-radius */
-}
-
-/* --- "Year of Service" Banner --- */
-.year-of-service {
+/* Graphic alignment rules */
+.story-canvas-grid {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  backdrop-filter: blur(5px); /* Frosted glass effect */
+  inset: 0;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  pointer-events: none;
 }
 
-/* --- Story Text Content --- */
-.story-text {
-  flex: 1; /* Allows the text block to fill the remaining space */
+.story-max-bound {
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-.story-text h3 {
+.story-asymmetric-layout {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  gap: 80px;
+  align-items: center;
+}
+
+/* ── LEFT SIDE: LAYERED VISUAL FRAMING ── */
+.story-visual-frame {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.story-image-offset-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 3 / 4;
+  margin: 0 auto;
+}
+
+/* Behind Ghost Accent Outline Frame */
+.story-frame-ghost-border {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #c4a468; /* Golden signature accent track */
+  z-index: 1;
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.story-image-offset-wrapper:hover .story-frame-ghost-border {
+  transform: translate(8px, 8px);
+}
+
+/* Main Graphic Image Holder */
+.story-main-img-holder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.story-main-img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(20%) contrast(102%);
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.story-image-offset-wrapper:hover img {
+  transform: scale(1.03);
+}
+
+/* Subtle cinematic dark vignette mask layer over image */
+.story-img-chroma-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 12, 0.4) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Modernized Tracking Metadata Label */
+.story-stamp-mono {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 380px;
+  margin: 0 auto;
+  padding-left: 2px;
+}
+
+.story-stamp-mono .stamp-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #c4a468;
+}
+
+.story-stamp-mono .stamp-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #444453;
+}
+
+/* ── RIGHT SIDE: TYPOGRAPHY ESSAY PANEL ── */
+.story-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.story-eyebrow-track {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #555566;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.story-heading-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 48px 0;
+  color: #ffffff;
+}
+
+.story-heading-serif em {
+  font-style: italic;
+  font-weight: 300;
+  color: #f3f4f6;
+}
+
+.story-essay-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.story-paragraph {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #b3b3b7;
+  margin: 0;
+}
+
+/* Fine Art Editorial Drop-cap */
+.story-paragraph.drop-cap::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.6rem;
+  float: left;
+  line-height: 0.85;
+  margin-right: 12px;
+  margin-top: 4px;
+  color: #c4a468;
+  font-weight: 400;
+}
+
+/* Callout Highlight Quote Block styling */
+.story-paragraph.highlighted-quote {
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  color: #333;
+  font-style: italic;
+  line-height: 1.6;
+  color: #ffffff;
+  border-left: 2px solid #c4a468;
+  padding-left: 28px;
+  margin: 12px 0;
+  max-width: 640px;
 }
 
-.story-text p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: #555;
-  margin-bottom: 1.5rem;
+/* ── MEDIA RESPONSIVE MEDIA QUERIES ── */
+@media (max-width: 1200px) {
+  .story-editorial-section {
+    padding: 100px 40px;
+  }
+  .story-asymmetric-layout {
+    grid-template-columns: 100%;
+    gap: 80px;
+  }
+  .story-visual-frame {
+    order: 1; /* Pushes image below header parameters if desired, or leave stacked */
+  }
+  .story-text-container {
+    order: 2;
+  }
+  .story-heading-serif {
+    font-size: 3.5rem;
+    margin-bottom: 36px;
+  }
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 992px) {
-  .story-layout {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 30px;
+@media (max-width: 600px) {
+  .story-editorial-section {
+    padding: 60px 20px;
   }
-
-  .story-image {
-    width: 100%;
-    max-width: 400px; /* Prevents the image from being too wide on tablets */
+  .story-heading-serif {
+    font-size: 2.6rem;
   }
-
-  /* Keep paragraphs left-aligned for readability even when the layout is centered */
-  .story-text {
-    text-align: left;
+  .story-image-offset-wrapper {
+    max-width: 280px;
+    left: 10px; /* Counterweight offset shift protection */
+  }
+  .story-paragraph.highlighted-quote {
+    font-size: 1.3rem;
+    padding-left: 20px;
   }
 }

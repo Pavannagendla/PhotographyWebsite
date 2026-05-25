@@ -1,41 +1,73 @@
-/* ===============================
-   PAGE CONTAINER
-================================ */
-.work-container {
-  background: #fff;
-  color: #111;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;600&display=swap');
+
+/* ==========================================================================
+   ── GENERAL SECTION FRAMEWORK ──
+   ========================================================================== */
+.archive-viewport-container {
+  background-color: #0a0a0c; /* High-end uncompromised gallery black */
+  color: #ffffff;
   min-height: 100vh;
-  padding: 50px 25px;
+  padding: 160px 80px 80px 80px;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  box-sizing: border-box;
 }
 
-/* ===============================
-   HEADER POLISH
-================================ */
-.work-header {
-  text-align: center;
-  margin-bottom: 42px;
+/* Blueprint Light-Table Underlay Matrix Grid */
+.archive-matrix-overlay {
+  position: absolute;
+  inset: 0;
+  background-size: 50px 50px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.work-header h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+/* ==========================================================================
+   ── EDITORIAL HEADER SECTION ──
+   ========================================================================== */
+.archive-header-spread {
+  max-width: 1440px;
+  margin: 0 auto 60px auto;
+  text-align: left;
+  position: relative;
+  z-index: 2;
 }
 
-.work-subtitle {
-  font-size: 1.15rem;
-  color: #777;
+.archive-mono-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: #c4a468; /* Dynamic uniform gold tint */
+  display: block;
+  margin-bottom: 16px;
+}
+
+.archive-title-serif {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.archive-subtitle-editorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
   font-style: italic;
-  letter-spacing: 1px;
-  margin-top: 6px;
-  animation: subtitleFade 0.35s ease;
+  font-weight: 300;
+  color: #8e8e93;
+  margin: 12px 0 0 0;
+  letter-spacing: 0.02em;
+  animation: subtitleReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes subtitleFade {
+@keyframes subtitleReveal {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -43,145 +75,203 @@
   }
 }
 
-.header-line {
-  width: 90px;
-  height: 3px;
-  margin: 18px auto 0;
-  background: linear-gradient(90deg, #111, #666);
-  border-radius: 10px;
-  animation: lineGrow 0.4s ease;
-}
-
-@keyframes lineGrow {
-  from {
-    width: 0;
-    opacity: 0;
-  }
-  to {
-    width: 90px;
-    opacity: 1;
-  }
-}
-
-/* ===============================
-   FILTER BUTTONS
-================================ */
-.work-filters {
+/* ==========================================================================
+   ── METADATA FILTER NAVIGATION ──
+   ========================================================================== */
+.archive-filter-ribbon {
   display: flex;
-  justify-content: center;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 8px;
   flex-wrap: wrap;
-  margin-bottom: 35px;
+  max-width: 1440px;
+  margin: 0 auto 50px auto;
+  border-bottom: 1px solid #14141a;
+  padding-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
 
-.work-filters button {
-  padding: 8px 18px;
-  border-radius: 30px;
-  border: 1px solid #ddd;
-  background: #fff;
+.filter-mono-node {
+  background: transparent;
+  border: none;
+  outline: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  padding: 8px 16px;
+  color: #555566;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.work-filters button:hover,
-.work-filters .active {
-  background: #111;
-  color: #fff;
-  border-color: #111;
+.filter-idx {
+  color: #2b2b36;
+  font-size: 0.65rem;
+  transition: color 0.3s ease;
 }
 
-/* ===============================
-   MASONRY GALLERY
-================================ */
-.work-gallery {
+/* Navigation State Triggers */
+.filter-mono-node:hover {
+  color: #ffffff;
+}
+
+.filter-mono-node.is-active {
+  color: #ffffff;
+}
+
+.filter-mono-node.is-active .filter-idx {
+  color: #c4a468;
+}
+
+.filter-mono-node.is-active .filter-lbl {
+  border-bottom: 1px solid #c4a468;
+  padding-bottom: 2px;
+}
+
+/* ==========================================================================
+   ── PURE FINE-ART MASONRY GRID ──
+   ========================================================================== */
+.archive-gallery-masonry {
   column-count: 3;
-  column-gap: 24px;
-  max-width: 1500px;
+  column-gap: 32px;
+  max-width: 1440px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
-/* ===============================
-   IMAGE CARD – MINIMAL HOVER
-================================ */
-.work-card {
+.archive-exhibit-card {
   position: relative;
   break-inside: avoid;
-  margin-bottom: 28px;
-  border-radius: 16px;
+  margin-bottom: 32px;
+  background-color: #121216;
   overflow: hidden;
-
-  /* Soft default shadow */
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-
-  transition: transform 0.35s ease,
-              box-shadow 0.35s ease;
+  border: 1px solid #14141c;
+  transition: border-color 0.4s ease;
 }
 
-.work-card img {
+.exhibit-img-scaffolding {
+  position: relative;
+  width: 100%;
+}
+
+.archive-exhibit-card img {
   width: 100%;
   display: block;
-
-  transition: transform 0.45s ease,
-              filter 0.45s ease;
+  filter: grayscale(15%) brightness(0.85);
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
 }
 
-/* Hover: soft lift */
-.work-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.18);
-}
-
-/* Hover: gentle zoom + slight darkening */
-.work-card:hover img {
-  transform: scale(1.04);
-  filter: brightness(0.9);
-}
-
-/* ===============================
-   SOFT DARK OVERLAY (NO TEXT)
-================================ */
-.overlay {
+/* Subtle Shading Vignette Layer */
+.exhibit-lens-vignette {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.18);
+  background: linear-gradient(to top, rgba(5, 5, 7, 0.8) 0%, transparent 40%);
+  opacity: 0.75;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Hardware Stamp Caption HUD Overlay */
+.exhibit-meta-tag {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transform: translateY(8px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.4s ease;
+  pointer-events: none;
 }
 
-.work-card:hover .overlay {
+.exhibit-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: #c4a468;
+}
+
+.exhibit-cat-stamp {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   ── INTERACTIVE GALLERY FOCUS HOVER REVEALS ──
+   ========================================================================== */
+.archive-gallery-masonry:hover .archive-exhibit-card:not(:hover) img {
+  filter: grayscale(60%) brightness(0.4) blur(1px); /* Blurs out surroundings on mouse move */
+}
+
+.archive-exhibit-card:hover {
+  border-color: #c4a468;
+}
+
+.archive-exhibit-card:hover img {
+  transform: scale(1.03);
+  filter: grayscale(0%) brightness(1.02);
+}
+
+.archive-exhibit-card:hover .exhibit-lens-vignette {
+  opacity: 0.4;
+}
+
+.archive-exhibit-card:hover .exhibit-meta-tag {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 1024px) {
-  .work-gallery {
+/* ==========================================================================
+   ── RESPONSIVE COMPACT SCALE BREAKPOINTS ──
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .archive-viewport-container {
+    padding: 120px 40px 60px 40px;
+  }
+  .archive-title-serif {
+    font-size: 3.6rem;
+  }
+  .archive-gallery-masonry {
     column-count: 2;
+    column-gap: 24px;
+  }
+  .archive-exhibit-card {
+    margin-bottom: 24px;
   }
 }
 
 @media (max-width: 768px) {
-  .work-gallery {
+  .archive-viewport-container {
+    padding: 100px 20px 40px 20px;
+  }
+  .archive-title-serif {
+    font-size: 2.8rem;
+  }
+  .archive-filter-ribbon {
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+  .archive-gallery-masonry {
     column-count: 1;
   }
-
-  /* Disable hover effects on mobile */
-  .work-card:hover {
+  
+  /* Retain composition aesthetics while lowering interaction demands on touch configurations */
+  .archive-gallery-masonry:hover .archive-exhibit-card:not(:hover) img {
+    filter: grayscale(15%) brightness(0.85);
+  }
+  .archive-exhibit-card img {
+    filter: grayscale(0%) brightness(0.95);
+  }
+  .exhibit-meta-tag {
+    opacity: 0.85;
     transform: none;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
-  }
-
-  .work-card:hover img {
-    transform: none;
-    filter: none;
-  }
-
-  .overlay {
-    display: none;
-  }
-
-  .work-header h1 {
-    font-size: 2.2rem;
   }
 }

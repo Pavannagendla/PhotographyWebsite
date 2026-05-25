@@ -153,27 +153,29 @@ const Work = () => {
       : photoData.filter(photo => photo.category === activeCategory);
 
   return (
-    <div className="work-container">
-      <header className="work-header">
-        <h1>My Work</h1>
+    <div className="archive-viewport-container">
+      {/* BACKGROUND MATRIX SCHEMATIC */}
+      <div className="archive-matrix-overlay"></div>
 
-        <p key={activeCategory} className="work-subtitle">
+      {/* HEADER BLOCK */}
+      <header className="archive-header-spread">
+        <span className="archive-mono-badge">// CATALOGUE INDEX</span>
+        <h1 className="archive-title-serif">Selected Works</h1>
+        <p key={activeCategory} className="archive-subtitle-editorial">
           {activeCategory === "All"
-            ? "Complete Photography Collection"
-            : `${activeCategory} Photography`}
+            ? "Master Index — Complete Photographic Records"
+            : `Exhibition Cluster — ${activeCategory} Architecture`}
         </p>
-
-        <div className="header-line"></div>
       </header>
 
-      <div className="work-filters">
-        {categories.map(cat => (
+      {/* MINIMALIST METADATA FILTER INTERFACE */}
+      <div className="archive-filter-ribbon">
+        {categories.map((cat, idx) => (
           <button
             key={cat}
-            className={activeCategory === cat ? "active" : ""}
+            className={`filter-mono-node ${activeCategory === cat ? "is-active" : ""}`}
             onClick={() => {
               setActiveCategory(cat);
-
               if (cat === "All") {
                 window.history.replaceState(null, "", "/work");
               } else {
@@ -185,20 +187,28 @@ const Work = () => {
               }
             }}
           >
-            {cat}
+            <span className="filter-idx">0{idx}/</span>
+            <span className="filter-lbl">{cat.toUpperCase()}</span>
           </button>
         ))}
       </div>
 
-      <div className="work-gallery">
+      {/* FINE-ART MASONRY GRID SYSTEM */}
+      <div className="archive-gallery-masonry">
         {filteredPhotos.map((photo, idx) => (
-          <div key={idx} className="work-card">
-            <img
-              src={photo.src}
-              alt={photo.category}
-              loading="lazy"
-            />
-            <div className="overlay"></div>
+          <div key={idx} className="archive-exhibit-card">
+            <div className="exhibit-img-scaffolding">
+              <img
+                src={photo.src}
+                alt={`Collection item ${idx + 1} classified under ${photo.category}`}
+                loading="lazy"
+              />
+              <div className="exhibit-lens-vignette"></div>
+              <div className="exhibit-meta-tag">
+                <span className="exhibit-num">FRM_{idx + 100}</span>
+                <span className="exhibit-cat-stamp">{photo.category.toUpperCase()}</span>
+              </div>
+            </div>
           </div>
         ))}
       </div>

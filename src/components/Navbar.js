@@ -1,39 +1,33 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css';
-// import logo from '../assets/images/logo w.png';
 
 const Navbar = () => {
   const [isNavOpen, setNavOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const navRef = useRef();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const overlayRef = useRef();
 
   useEffect(() => {
-    const controlNavbar = () => {
-      if (window.scrollY > lastScrollY && window.scrollY > 80) {
-        setIsHidden(true);
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
       } else {
-        setIsHidden(false);
+        setIsScrolled(false);
       }
-      setLastScrollY(window.scrollY);
     };
 
-    window.addEventListener('scroll', controlNavbar);
-    return () => {
-      window.removeEventListener('scroll', controlNavbar);
-    };
-  }, [lastScrollY]);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // Close nav when clicking outside (mobile)
+  // Lock scroll background layers when exhibition index window is expanded
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (isNavOpen && navRef.current && !navRef.current.contains(event.target)) {
-        setNavOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    if (isNavOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
   }, [isNavOpen]);
 
   const handleLinkClick = () => {
@@ -41,48 +35,76 @@ const Navbar = () => {
   };
 
   return (
-    <header
-      className={`main-header ${isHidden ? 'hidden' : ''} ${isNavOpen ? 'nav-open' : ''}`}
-      ref={navRef}
-    >
-      <div className="navbar-brand">
-        <NavLink to="/" onClick={handleLinkClick}>
-          {/* <img src={logo} alt="Hacker Camerawork Logo" className="logo" /> */}
-          <h3>HACKER_CAMERAWORK</h3>
-        </NavLink>
+    <>
+      {/* FIXED PERIMETER FRAME */}
+      <header className={`nav-hud-perimeter ${isScrolled ? 'has-scrolled' : ''}`}>
+        <div className="nav-hud-frame-inner">
+          
+          {/* BRAND EMBLEM LOGO */}
+          <div className="nav-hud-logo-mono">
+            <NavLink to="/" onClick={handleLinkClick}>
+              HACKER_<span>CAMERAWORK</span>
+            </NavLink>
+          </div>
+
+          {/* DUAL ACTION CAMERA SHUTTER TRIGGER */}
+          <button 
+            className={`shutter-dial-trigger ${isNavOpen ? 'is-expanded' : ''}`}
+            onClick={() => setNavOpen(!isNavOpen)}
+            aria-label="Toggle Exhibition Index Menu"
+            aria-expanded={isNavOpen}
+          >
+            <div className="dial-shutter-blades">
+              <span className="blade b1"></span>
+              <span className="blade b2"></span>
+            </div>
+            <span className="dial-status-mono">{isNavOpen ? 'CLOSE' : 'MENU'}</span>
+          </button>
+
+        </div>
+      </header>
+
+      {/* OVERLAY EXHIBITION INDEX DRAWERS SCREEN */}
+      <div className={`nav-exhibition-lightbox ${isNavOpen ? 'is-active' : ''}`} ref={overlayRef}>
+        <div className="lightbox-watermark-substratum">VIEWFINDER</div>
+        
+        <nav className="lightbox-nav-matrix">
+          <ul className="lightbox-links-list">
+            <li style={{ '--item-index': '01' }}>
+              <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-slide' : ''}>
+                <span className="slide-num">01</span> Home
+              </NavLink>
+            </li>
+            <li style={{ '--item-index': '02' }}>
+              <NavLink to="/work" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-slide' : ''}>
+                <span className="slide-num">02</span> Work
+              </NavLink>
+            </li>
+            <li style={{ '--item-index': '03' }}>
+              <NavLink to="/overview" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-slide' : ''}>
+                <span className="slide-num">03</span> Portfolio
+              </NavLink>
+            </li>
+            <li style={{ '--item-index': '04' }}>
+              <NavLink to="/about" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-slide' : ''}>
+                <span className="slide-num">04</span> About
+              </NavLink>
+            </li>
+            <li style={{ '--item-index': '05' }}>
+              <NavLink to="/contact" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-slide' : ''}>
+                <span className="slide-num">05</span> Contact
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        {/* CORD INDICATOR GRAPHICS */}
+        <div className="lightbox-hud-footer">
+          <span>INDEX // SYSTEM_ONLINE</span>
+          <span>MANUAL_MODE_OK</span>
+        </div>
       </div>
-      <button
-        className="navbar-toggle"
-        onClick={() => setNavOpen(!isNavOpen)}
-        aria-label="Toggle navigation"
-        aria-expanded={isNavOpen}
-        tabIndex={0}
-        onKeyDown={e => {
-          if (e.key === 'Enter' || e.key === ' ') setNavOpen(!isNavOpen);
-        }}
-      >
-        <span className="toggle-icon"></span>
-      </button>
-      <nav className={`navbar-menu ${isNavOpen ? 'active' : ''}`}>
-        <ul>
-          <li>
-            <NavLink to="/" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/work" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Work</NavLink>
-          </li>
-          <li>
-            <NavLink to="/overview" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Portfolio</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>About</NavLink>
-          </li>
-          <li>
-            <NavLink to="/contact" onClick={handleLinkClick} className={({ isActive }) => isActive ? 'active-link' : ''}>Contact</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    </>
   );
 };
 

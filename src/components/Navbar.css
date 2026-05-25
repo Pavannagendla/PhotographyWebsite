@@ -1,187 +1,273 @@
-.main-header {
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=DM+Mono:wght@300;400&family=Inter:wght@200;300;400&display=swap');
+
+/* ── PERIMETER MOUNTED HEADER FRAME ── */
+.nav-hud-perimeter {
+  position: fixed;
+  top: 48px; /* Rests right below your Technical Status Utility Ribbon */
+  left: 0;
+  right: 0;
+  height: 90px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  z-index: 99998; /* Under utility header, above content panels */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+.nav-hud-perimeter.has-scrolled {
+  top: 0;
+  height: 75px;
+  background-color: rgba(6, 6, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #14141a;
+}
+
+.nav-hud-frame-inner {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-  backdrop-filter: blur(10px); /* Frosted glass effect */
-  border-bottom: 1px solid #eaeaea;
-  position: fixed; /* Fixed at the top */
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  height: 70px;
-  transition: top 0.4s, opacity 0.3s;
+  box-sizing: border-box;
 }
 
-.main-header.hidden {
-  top: -80px;
+/* ── IDENTITY LOGO MONO ── */
+.nav-hud-logo-mono a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.nav-hud-logo-mono a span {
+  color: #8e8e93;
+  font-weight: 300;
+}
+
+.nav-hud-logo-mono a:hover {
+  color: #c4a468;
+}
+
+/* ── CAMERA SHUTTER TRIGGER BUTTON ── */
+.shutter-dial-trigger {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 14px;
+  z-index: 99999; /* Stays mounted cleanly over the full-screen curtain layer */
+  position: relative;
+}
+
+.dial-shutter-blades {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border: 1px dashed rgba(196, 164, 104, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.shutter-dial-trigger:hover .dial-shutter-blades {
+  transform: rotate(90deg);
+  border-color: #c4a468;
+}
+
+.blade {
+  position: absolute;
+  width: 14px;
+  height: 1px;
+  background-color: #ffffff;
+  transition: transform 0.4s ease, background-color 0.4s ease;
+}
+.blade.b1 { transform: rotate(0deg); }
+.blade.b2 { transform: rotate(90deg); }
+
+.dial-status-mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: #8e8e93;
+  transition: color 0.3s ease;
+}
+
+.shutter-dial-trigger:hover .dial-status-mono {
+  color: #ffffff;
+}
+
+/* Shutter Trigger Expanded State Transformations */
+.shutter-dial-trigger.is-expanded .dial-shutter-blades {
+  border-color: #c4a468;
+  border-style: solid;
+  transform: rotate(135deg);
+}
+
+.shutter-dial-trigger.is-expanded .blade {
+  background-color: #c4a468;
+}
+
+.shutter-dial-trigger.is-expanded .dial-status-mono {
+  color: #c4a468;
+}
+
+/* ── FINE ART EXHIBITION DRAWERS LIGHTBOX ── */
+.nav-exhibition-lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: #050507; /* Dark room terminal background layout canvas */
+  z-index: 99997;
+  display: flex;
+  align-items: center;
+  padding: 0 160px;
+  box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.navbar-brand a {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #000;
-  text-decoration: none;
-  letter-spacing: 1px;
+.nav-exhibition-lightbox.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.navbar-menu ul {
+/* Big Abstract Watermark Stack */
+.lightbox-watermark-substratum {
+  position: absolute;
+  left: 80px;
+  bottom: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14rem;
+  font-weight: 700;
+  color: #09090c;
+  user-select: none;
+  pointer-events: none;
+  line-height: 0.8;
+}
+
+.lightbox-nav-matrix {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 800px;
+}
+
+.lightbox-links-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.navbar-menu li {
-  margin-left: 2rem;
+.lightbox-links-list li {
+  position: relative;
 }
 
-.navbar-menu a {
+/* Large Editorial Menu Triggers */
+.lightbox-links-list a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: #2b2b36; /* Dark grayed baseline text layout nodes */
   text-decoration: none;
-  color: #333;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 24px;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbar-menu a:hover,
-.navbar-menu .active-link {
-  color: #0070f3; /* A modern blue for hover and active */
-  border-bottom: 2px solid #0070f3;
+.slide-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  color: #1c1c24;
+  transition: color 0.4s ease;
 }
 
-.navbar-toggle {
-  display: none; /* Hidden on desktop */
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  position: relative;
-  z-index: 1201;
-}
-
-.toggle-icon {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: #333;
-  position: relative;
-  transition: background 0.3s;
-}
-
-.toggle-icon::before,
-.toggle-icon::after {
-  content: '';
+/* ── OVERLAY DYNAMIC WATERMARK TEXT HOVER EFFECT ── */
+.lightbox-links-list li::after {
+  content: var(--item-index);
   position: absolute;
-  width: 24px;
-  height: 2px;
-  background-color: #333;
-  transition: transform 0.3s, top 0.3s;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 10rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #08080b; /* Hidden deep tone watermark merges back out smoothly */
+  z-index: -1;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease, right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.toggle-icon::before { top: -8px; }
-.toggle-icon::after { top: 8px; }
-
-/* Animate hamburger to X when nav is open */
-.main-header.nav-open .toggle-icon {
-  background: transparent;
-}
-.main-header.nav-open .toggle-icon::before {
-  transform: rotate(45deg);
-  top: 0;
-}
-.main-header.nav-open .toggle-icon::after {
-  transform: rotate(-45deg);
-  top: 0;
+/* Active Hover Frame State Interactions */
+.lightbox-links-list a:hover {
+  color: #ffffff;
+  transform: translateX(20px);
 }
 
-/* Responsive (Mobile) Styles */
-@media (max-width: 900px) {
-  .navbar-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    position: absolute;
-    right: 1.5rem;
-    top: 1.2rem;
-    z-index: 1201;
-    cursor: pointer;
-  }
-
-  .navbar-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    top: 70px;
-    right: -100vw;
-    width: 70vw;
-    max-width: 320px;
-    height: 100vh;
-    background: #fff;
-    box-shadow: -2px 0 16px rgba(0,0,0,0.08);
-    padding-top: 2rem;
-    transition: right 0.35s cubic-bezier(.4,2,.3,1);
-    z-index: 1200;
-  }
-
-  .navbar-menu ul {
-    flex-direction: column;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .navbar-menu li {
-    width: 100%;
-    margin: 0;
-    border-bottom: 1px solid #eee;
-  }
-
-  .navbar-menu a {
-    display: block;
-    width: 100%;
-    padding: 1.2rem 2rem;
-    font-size: 1.1rem;
-    color: #222;
-    text-align: left;
-  }
-
-  .navbar-menu.active {
-    right: 0;
-  }
+.lightbox-links-list a:hover .slide-num {
+  color: #c4a468;
 }
 
-/* Desktop styles */
-@media (min-width: 901px) {
-  .navbar-toggle {
-    display: none;
-  }
-  .navbar-menu {
-    position: static;
-    display: flex !important;
-    flex-direction: row;
-    height: auto;
-    background: none;
-    box-shadow: none;
-    padding-top: 0;
-    transition: none;
-  }
-  .navbar-menu ul {
-    flex-direction: row;
-    gap: 2rem;
-  }
-  .navbar-menu li {
-    border: none;
-  }
-  .navbar-menu a {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    text-align: center;
-  }
+.lightbox-links-list li:hover::after {
+  opacity: 1;
+  right: 0px; /* Slides smoothly across background alignment vectors */
+}
+
+/* Active Route Pointer Indicator */
+.lightbox-links-list .active-slide {
+  color: #ffffff;
+}
+.lightbox-links-list .active-slide .slide-num {
+  color: #c4a468;
+}
+
+/* Lightbox HUD Framing Elements */
+.lightbox-hud-footer {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  right: 80px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #1a1a24;
+  border-top: 1px solid #0d0d12;
+  padding-top: 24px;
+}
+
+/* ── COMPACT WEB MEDIA RESPONSIVENESS ADAPTATIONS ── */
+@media (max-width: 1200px) {
+  .nav-hud-frame-inner { padding: 0 40px; }
+  .nav-exhibition-lightbox { padding: 0 80px; }
+  .lightbox-hud-footer { left: 40px; right: 40px; }
+  .lightbox-links-list a { font-size: 3.5rem; }
+}
+
+@media (max-width: 650px) {
+  .nav-hud-perimeter { top: 48px !important; } /* Maintains utility bridge lock safely on mobile architectures */
+  .nav-hud-frame-inner { padding: 0 20px; }
+  .nav-exhibition-lightbox { padding: 0 32px; }
+  .lightbox-hud-footer { left: 20px; right: 20px; }
+  .lightbox-links-list a { font-size: 2.6rem; }
+  .lightbox-watermark-substratum, .lightbox-links-list li::after { display: none; } /* Drops heavy watermark clutter off smaller screen viewports */
 }

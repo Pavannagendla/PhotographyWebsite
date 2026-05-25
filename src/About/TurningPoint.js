@@ -5,7 +5,7 @@ const events = [
   {
     id: '2024-june',
     year: '2024',
-    label: 'June 2024',
+    label: 'JUNE 2024',
     title: 'First Exhibition — Lensified, ICCR, Kolkata',
     description: `
       In June 2024, I showcased my work for the very first time at the Lensified Photography Exhibition
@@ -17,8 +17,8 @@ const events = [
   {
     id: '2025-march',
     year: '2025',
-    label: 'March 2025',
-    title: 'Second Exhibition & Magazine — ASX, Chitrakala Parishath, Bangalore',
+    label: 'MARCH 2025',
+    title: 'Second Exhibition & Magazine — ASX, Chitrakala Parishath',
     description: `
       In March 2025, I took another step forward when my second photography exhibition and second magazine
       release took place at Chitrakala Parishath, Bangalore, through ASX – The Picture Perfect. It was a
@@ -28,7 +28,7 @@ const events = [
   {
     id: '2025-april',
     year: '2025',
-    label: 'April 2025',
+    label: 'APRIL 2025',
     title: 'First Magazine Feature — India in 100 Frames, Retro Kolkata',
     description: `
       April 2025 was a milestone that filled me with immense pride. I was selected for my first photography
@@ -40,7 +40,7 @@ const events = [
   {
     id: '2025-july',
     year: '2025',
-    label: 'July 2025',
+    label: 'JULY 2025',
     title: 'Third Exhibition — Lensified, ICCR, Kolkata',
     description: `
       In July 2025, I returned once again to Kolkata ICCR for my third photography exhibition with Lensified —
@@ -52,83 +52,67 @@ const events = [
 
 const TurningPoint = () => {
   const [activeId, setActiveId] = useState('2024-june');
-
   const activeEvent = events.find((event) => event.id === activeId);
 
   return (
-    <section className="turning-section">
-      <h2 className="turning-heading">About the Turning Point</h2>
+    <section className="tp-film-section">
+      <div className="tp-section-header">
+        <span className="tp-eyebrow-mono">02 // HISTORICAL EVOLUTION</span>
+        <h2 className="tp-heading-serif">The Turning <em>Point</em></h2>
+        
+        <div className="tp-intro-block">
+          <p className="tp-lead-text">
+            As time passed, the rented camera became an inseparable part of my routine. Eventually, I took
+            a leap of faith and purchased my first-ever camera — the Nikon D5600. With it, my world expanded.
+            I began exploring every genre I could: street, portrait, landscape, wildlife, architecture, and more.
+          </p>
+        </div>
+      </div>
 
-      {/* Intro Text (common for all) */}
-      <p className="turning-intro">
-        As time passed, the rented camera became an inseparable part of my routine. Eventually, I took
-        a leap of faith and purchased my first-ever camera — the Nikon D5600. With it, my world expanded.
-        I began exploring every genre I could: street, portrait, landscape, wildlife, architecture, and more.
-        Each category revealed a new perspective, a new challenge, and a new story waiting to be told
-        through my lens.
-      </p>
+      {/* HORIZONTAL FILMSTRIP CHRONOLOGY TRACK */}
+      <div className="tp-filmstrip-container">
+        <div className="tp-track-line"></div>
+        <div className="tp-strip-scroll">
+          {events.map((event) => (
+            <button
+              key={event.id}
+              className={`tp-strip-node ${activeId === event.id ? 'is-active' : ''}`}
+              onClick={() => setActiveId(event.id)}
+            >
+              <span className="node-year-label">{event.year}</span>
+              <div className="node-indicator-dot">
+                <div className="inner-dot"></div>
+              </div>
+              <span className="node-month-label">{event.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
 
-      <p className="turning-intro-sub">
-        My passion soon grew into something larger than I had ever imagined. These milestones shaped the
-        photographer I am today:
-      </p>
-
-      <div className="turning-layout">
-        {/* LEFT: Years & Months Timeline */}
-        <aside className="timeline-sidebar">
-          {/* Grouped by year */}
-          <div className="timeline-year-block">
-            <h4 className="timeline-year">2024</h4>
-            {events
-              .filter((e) => e.year === '2024')
-              .map((event) => (
-                <button
-                  key={event.id}
-                  className={`timeline-month ${
-                    activeId === event.id ? 'active' : ''
-                  }`}
-                  onClick={() => setActiveId(event.id)}
-                >
-                  {event.label}
-                </button>
-              ))}
+      {/* CINEMATIC DISPLAY SCREEN */}
+      <div className="tp-stage">
+        <div className="tp-stage-inner keyframe-appear" key={activeEvent.id}>
+          <div className="tp-stage-meta">
+            <span className="tp-meta-index">{activeEvent.label}</span>
+            <h3 className="tp-stage-title">{activeEvent.title}</h3>
           </div>
-
-          <div className="timeline-year-block">
-            <h4 className="timeline-year">2025</h4>
-            {events
-              .filter((e) => e.year === '2025')
-              .map((event) => (
-                <button
-                  key={event.id}
-                  className={`timeline-month ${
-                    activeId === event.id ? 'active' : ''
-                  }`}
-                  onClick={() => setActiveId(event.id)}
-                >
-                  {event.label}
-                </button>
-              ))}
-          </div>
-        </aside>
-
-        {/* RIGHT: Details of selected month */}
-        <div className="timeline-detail">
-          <div className="timeline-detail-card">
-            <p className="timeline-detail-label">{activeEvent.label}</p>
-            <h3 className="timeline-detail-title">{activeEvent.title}</h3>
-            <p className="timeline-detail-text">{activeEvent.description}</p>
-          </div>
-
-          <div className="journey">
-            <p>
-              What began as a simple curiosity during a dark time had grown into a passion, a profession, and a
-              purpose. My camera, once a mystery, has now become my voice — telling stories, capturing moments,
-              and preserving emotions that words often cannot.
-            </p>
+          
+          <div className="tp-stage-body">
+            <p className="tp-stage-desc">{activeEvent.description}</p>
           </div>
         </div>
       </div>
+
+      {/* FOOTER MANIFESTO */}
+      <footer className="tp-manifesto-footer">
+        <div className="tp-manifesto-box">
+          <p>
+            What began as a simple curiosity during a dark time had grown into a passion, a profession, and a
+            purpose. My camera, once a mystery, has now become my voice — telling stories, capturing moments,
+            and preserving emotions that words often cannot.
+          </p>
+        </div>
+      </footer>
     </section>
   );
 };

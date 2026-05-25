@@ -1,41 +1,83 @@
-.main-footer {
-    padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&display=swap');
+
+/* ── TERMINAL FOOTER CANVAS ── */
+.portfolio-terminal-footer {
+  background-color: #050507; /* Matches the absolute darkroom canvas backdrop */
+  padding: 48px 80px;
+  border-top: 1px solid #14141a; /* Clean framing dividing line */
+  font-family: 'DM Mono', monospace;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-structural-max {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* ── LEFT CONTAINER METADATA ── */
+.copyright-mono {
+  margin: 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #3a3a44; /* Beautifully muted technical gray */
+  font-weight: 400;
+}
+
+/* ── RIGHT CONTAINER NAVIGATION ── */
+.footer-links-right {
+  display: flex;
+  gap: 32px;
+}
+
+.footer-editorial-link {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  color: #8e8e93;
+  text-decoration: none;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.arrow-diagonal {
+  font-size: 0.6rem;
+  color: #3a3a44;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+/* Dynamic Interaction Overlays */
+.footer-editorial-link:hover {
+  color: #c4a468; /* Subtle shift to your signature warm gold accent color */
+}
+
+.footer-editorial-link:hover .arrow-diagonal {
+  color: #c4a468;
+  transform: translate(2px, -2px);
+}
+
+/* ── RESPONSIVE COMPACT MEDIA QUERIES ── */
+@media (max-width: 1200px) {
+  .portfolio-terminal-footer {
+    padding: 48px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-structural-max {
+    flex-direction: column-reverse; /* Pushes copyright to the bottom on mobile displays safely */
+    gap: 28px;
     text-align: center;
-    border-top: 1px solid #eaeaea;
-    margin-top: 4rem;
   }
   
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  .footer-links-right {
+    justify-content: center;
+    gap: 24px;
   }
-  
-  .footer-content p {
-    margin: 0;
-    color: #666;
-  }
-  
-  .social-links a {
-    margin-left: 1.5rem;
-    color: #666;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .social-links a:hover {
-    color: #0070f3;
-  }
-  
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-    }
-    .social-links {
-      margin-top: 1rem;
-    }
-    .social-links a {
-      margin: 0 0.75rem;
-    }
-  }
+}
