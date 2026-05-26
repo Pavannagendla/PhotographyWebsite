@@ -1,5 +1,6 @@
 import React from "react";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+/* CHANGED: Swapped out HashRouter for BrowserRouter */
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
@@ -13,7 +14,8 @@ import CombinedPage from "./Common/CombinedPage";
 
 function App() {
   return (
-    <Router>
+    /* CHANGED: Added the repository name as the basename so GitHub Pages can route cleanly */
+    <Router basename="/hacker-camerawork">
       {/* THE TECHNICAL UTILITY RIBBON LAYER */}
       <Header />
       
