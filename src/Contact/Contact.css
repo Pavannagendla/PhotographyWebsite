@@ -414,7 +414,7 @@
   .panel-editorial {
     border-right: none;
     border-bottom: 1px solid #1c1c24;
-    padding: 60px 40px;
+    padding: 80px 40px;
   }
   .panel-interactive {
     padding: 80px 40px;
@@ -426,7 +426,7 @@
 
 @media (max-width: 600px) {
   .panel-editorial, .panel-interactive {
-    padding: 48px 24px;
+    padding: 78px 24px;
   }
   .display-serif {
     font-size: 2.4rem;

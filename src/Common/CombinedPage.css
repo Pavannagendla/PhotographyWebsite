@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;500;600&display=swap');
 
 /* ── MAIN LANDING CANVAS FRAME ── */
 .combined-page-canvas {
@@ -9,57 +9,58 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 140px; /* Strong editorial structural separation space */
-  padding-bottom: 80px;
-  
-  /* 
-    CRITICAL HUD INTERFACE PADDING BOUNDARY
-    48px (Top Utility Ribbon) + 90px (Initial Lens Navbar) = 138px base height.
-    Adding extra layout buffer space ensures titles never clip under fixed elements.
-  */
-  padding-top: 150px; 
   box-sizing: border-box;
+  padding-top: 160px;
+  padding-bottom: 0px;
+  overflow-x: hidden;
 }
 
 .canvas-matrix-substratum {
   position: absolute;
   inset: 0;
-  background-size: 50px 50px;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.006) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.006) 1px, transparent 1px);
   pointer-events: none;
   z-index: 1;
 }
 
-/* ── HERO HEADER PANEL ── */
-.landing-hero-strip {
+.portfolio-section-block {
   position: relative;
   z-index: 2;
-  margin-top: 20px; /* Aligns comfortably below structural top offsets */
-  padding: 0 80px;
+  width: 100%;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  border-bottom: 1px solid rgba(28, 28, 36, 0.4);
+  box-sizing: border-box;
+}
+.portfolio-section-block:last-of-type {
+  border-bottom: none;
+}
+
+/* ── CHAPTER 01: HERO MONOGRAPH PANEL ── */
+.landing-hero-strip {
   display: grid;
-  grid-template-columns: 55% 45%;
-  gap: 40px;
+  grid-template-columns: 58% 42%;
+  gap: 60px;
   align-items: flex-end;
   max-width: 1440px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 20px auto 0 auto;
+  padding: 0 80px 120px 80px;
 }
 
 .landing-mono-tag {
   font-family: 'DM Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   letter-spacing: 0.25em;
   color: #c4a468;
   display: block;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .landing-title-serif {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 4.5rem;
+  font-size: 4.8rem;
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.02em;
@@ -70,7 +71,7 @@
   display: block;
   font-size: 2.2rem;
   color: #8e8e93;
-  margin-top: 14px;
+  margin-top: 18px;
   font-weight: 200;
 }
 
@@ -83,40 +84,35 @@
 .landing-lead-narrative {
   font-size: 1.1rem;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.85;
   color: #a1a1aa;
   margin: 0;
   border-left: 1px solid #1c1c24;
-  padding-left: 32px;
+  padding-left: 40px;
 }
 
-/* ── PHILOSOPHY SECTION ── */
+/* ── CHAPTER 02: GALLERY PHILOSOPHY OVERLAY ── */
 .landing-philosophy-bar {
-  position: relative;
-  z-index: 2;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 80px 40px;
   text-align: center;
-}
-
-.philosophy-inner-quote {
-  position: relative;
+  border-bottom: 1px solid #14141a;
 }
 
 .quote-marker-mono {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 5rem;
+  font-size: 6rem;
   color: #c4a468;
-  opacity: 0.15;
+  opacity: 0.12;
   display: block;
   line-height: 1;
-  margin-bottom: -20px;
+  margin-bottom: -25px;
 }
 
 .philosophy-inner-quote p {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-style: italic;
   font-weight: 300;
   line-height: 1.6;
@@ -124,29 +120,29 @@
   margin: 0;
 }
 
-/* ── COMMON HEADERS ── */
+/* ── UNIFIED EDITORIAL HEADER SCHEMES ── */
 .exhibit-header-line {
   max-width: 1440px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 60px auto;
   padding: 0 80px;
   box-sizing: border-box;
 }
 
 .mono-label {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   color: #444453;
   display: block;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .section-serif-title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 300;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .section-serif-title em {
@@ -158,17 +154,13 @@
 .exhibit-context-sub {
   font-size: 0.95rem;
   color: #8e8e93;
-  margin-top: 12px;
+  margin-top: 14px;
   font-weight: 300;
+  max-width: 600px;
+  line-height: 1.6;
 }
 
-/* ── INSTAGRAM SECTION ── */
-.landing-instagram-exhibit {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-}
-
+/* ── CHAPTER 03: INSTAGRAM DISPATCH MATRIX ── */
 .landing-instagram-grid {
   max-width: 1440px;
   margin: 0 auto;
@@ -200,32 +192,33 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(15%) brightness(0.9);
+  filter: grayscale(12%) brightness(0.88);
   transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .insta-frame-vignette {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 50%, rgba(10, 10, 12, 0.4) 100%);
+  background: radial-gradient(circle, transparent 55%, rgba(10, 10, 12, 0.5) 100%);
   pointer-events: none;
 }
 
 .insta-hover-hud {
   position: absolute;
   inset: 0;
-  background-color: rgba(5, 5, 7, 0.6);
+  background-color: rgba(5, 5, 7, 0.65);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
+  backdrop-filter: blur(4px);
   transition: opacity 0.3s ease;
 }
 
 .hud-txt {
   font-family: 'DM Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: #ffffff;
 }
 
@@ -233,10 +226,7 @@
   transform: scale(1.04);
   filter: grayscale(0%) brightness(1.02);
 }
-
-.instagram-editorial-card:hover .insta-hover-hud {
-  opacity: 1;
-}
+.instagram-editorial-card:hover .insta-hover-hud { opacity: 1; }
 
 .insta-card-footer {
   display: flex;
@@ -245,106 +235,105 @@
   padding: 0 2px;
 }
 
-.insta-index {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: #3a3a44;
-}
+.insta-index { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #3a3a44; }
+.insta-tag-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; color: #8e8e93; letter-spacing: 0.05em; }
+.instagram-editorial-card:hover .insta-tag-label { color: #c4a468; }
 
-.insta-tag-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.65rem;
-  color: #8e8e93;
-  letter-spacing: 0.05em;
-}
-
-.instagram-editorial-card:hover .insta-tag-label {
-  color: #c4a468;
-}
-
-/* ── NESTED COMPONENT RESET PASSTHROUGH ── */
-.landing-nested-about-row {
-  position: relative;
-  z-index: 2;
+/* ── CHAPTER 04: THE COMPOSITE BIOGRAPHY ROW ── */
+.nested-biography-wrapper {
   width: 100%;
+  box-sizing: border-box;
 }
-.landing-nested-about-row .hero-editorial-section {
-  padding-top: 0px !important; /* Strips double padding issues when nesting */
+.nested-biography-wrapper .hero-editorial-section {
+  padding-top: 0px !important;
 }
 
-/* ── ASYMMETRIC PORTFOLIO MOSAIC ── */
-.landing-portfolio-exhibition {
+/* ==========================================================================
+   ── FIXED NO SPACE ON SIDES OVERRIDES (FULL BREAKOUT DECK) ──
+   ========================================================================== */
+.landing-portfolio-exhibition.full-bleed-exhibition-container {
+  width: 100vw;
+  max-width: 100vw;
   position: relative;
-  z-index: 2;
-  width: 100%;
+  
+  /* Breaks layout wrappers to force content edge-to-edge across monitor viewports */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .landing-portfolio-mosaic-grid {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 80px;
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  grid-auto-rows: 220px;
-  grid-auto-flow: dense;
-  gap: 24px;
+  
+  /* Clean 4-column master alignment track */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0px; 
   box-sizing: border-box;
 }
 
-.portfolio-mosaic-item.normal { grid-column: span 1; grid-row: span 2; }
-.portfolio-mosaic-item.tall { grid-column: span 1; grid-row: span 3; }
-.portfolio-mosaic-item.wide { grid-column: span 2; grid-row: span 2; }
-.portfolio-mosaic-item.big { grid-column: span 2; grid-row: span 3; }
+.portfolio-mosaic-item {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 .portfolio-mosaic-img-scaffold {
   position: relative;
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1; /* Symmetrical blocks allow neat tile lines */
   overflow: hidden;
-  border: 1px solid #16161f;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .portfolio-mosaic-img-scaffold img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(10%) brightness(0.85);
-  transition: all 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .portfolio-card-gradient-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(5, 5, 7, 0.75) 0%, rgba(5, 5, 7, 0.1) 50%);
-  transition: opacity 0.4s ease;
+  background: linear-gradient(to top, rgba(5, 5, 7, 0.55) 0%, transparent 25%);
+  pointer-events: none;
 }
 
 .portfolio-card-caption-hud {
   position: absolute;
   bottom: 24px;
   left: 24px;
+  z-index: 3;
 }
 
 .portfolio-category-badge {
   font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
   color: #ffffff;
   text-transform: uppercase;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 4px 10px;
-  background-color: rgba(10, 10, 12, 0.4);
+  padding: 5px 12px;
+  background-color: rgba(10, 10, 12, 0.45);
   backdrop-filter: blur(4px);
-  transition: all 0.3s ease;
-}
-
-.landing-portfolio-mosaic-grid:hover .portfolio-mosaic-item:not(:hover) img {
-  filter: grayscale(60%) brightness(0.5) blur(1px);
 }
 
 .portfolio-mosaic-item:hover img {
-  transform: scale(1.03);
-  filter: grayscale(0%) brightness(1.02);
+  transform: scale(1.05);
 }
 
 .portfolio-mosaic-item:hover .portfolio-category-badge {
@@ -353,66 +342,77 @@
   border-color: #c4a468;
 }
 
-/* ── CONTACT GRID BLOCK ── */
-.landing-contact-isolation-grid {
-  position: relative;
-  z-index: 2;
+/* ── CHAPTER 06: TECHNICAL TERMINAL CONNECTION ── */
+.nested-contact-wrapper {
   width: 100%;
+  box-sizing: border-box;
 }
-.landing-contact-isolation-grid .contact-viewport {
+.nested-contact-wrapper .contact-viewport {
   margin-top: 0px !important;
+  padding-top: 0px !important;
 }
 
-/* ── RESPONSIVE COMPACT BREAKPOINTS ── */
+/* ==========================================================================
+   ── RESPONSIVE COMPACT MEDIA OVERRIDES ──
+   ========================================================================== */
 @media (max-width: 1200px) {
-  .combined-page-canvas { 
-    gap: 100px; 
-    padding-top: 130px; /* Slightly lower padding threshold for tablet viewports */
+  .combined-page-canvas { padding-top: 130px; }
+  .portfolio-section-block { padding-top: 70px; padding-bottom: 70px; }
+  
+  .landing-hero-strip, 
+  .exhibit-header-line, 
+  .landing-instagram-grid {
+    padding-left: 40px;
+    padding-right: 40px;
   }
-  .landing-hero-strip, .exhibit-header-line, .landing-instagram-grid, .landing-portfolio-mosaic-grid {
-    padding: 0 40px;
-  }
-  .landing-title-serif { font-size: 3.5rem; }
+  
+  .landing-title-serif { font-size: 3.6rem; }
   .landing-title-serif span { font-size: 1.8rem; }
   .landing-instagram-grid { grid-template-columns: repeat(2, 1fr); }
+  
+  /* Fits 3 horizontal columns on medium screens */
+  .landing-portfolio-mosaic-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 900px) {
   .landing-hero-strip {
     grid-template-columns: 100%;
-    gap: 24px;
+    gap: 30px;
+    padding-bottom: 60px;
   }
   .landing-lead-narrative {
     border-left: none;
     padding-left: 0;
     border-top: 1px solid #1c1c24;
-    padding-top: 20px;
+    padding-top: 24px;
   }
-  .landing-portfolio-mosaic-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 180px;
-  }
-  .portfolio-mosaic-item.wide, .portfolio-mosaic-item.big {
-    grid-column: span 2;
-  }
+  .philosophy-inner-quote p { font-size: 1.6rem; }
+  .section-serif-title { font-size: 2.6rem; }
+  
+  /* Fits 2 columns on tablet screens */
+  .landing-portfolio-mosaic-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 650px) {
-  .combined-page-canvas {
-    padding-top: 118px; /* Perfectly matches mobile hardware offsets */
-  }
+  .combined-page-canvas { padding-top: 118px; }
 }
 
 @media (max-width: 550px) {
-  .combined-page-canvas { gap: 80px; }
-  .landing-hero-strip, .exhibit-header-line, .landing-instagram-grid, .landing-portfolio-mosaic-grid {
-    padding: 0 20px;
+  .portfolio-section-block { padding-top: 50px; padding-bottom: 50px; }
+  
+  .landing-hero-strip, 
+  .exhibit-header-line, 
+  .landing-instagram-grid {
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  .landing-title-serif { font-size: 2.5rem; }
-  .landing-title-serif span { font-size: 1.4rem; }
-  .philosophy-inner-quote p { font-size: 1.35rem; }
+  
+  .landing-title-serif { font-size: 2.6rem; }
+  .landing-title-serif span { font-size: 1.3rem; }
+  .philosophy-inner-quote p { font-style: italic; font-size: 1.3rem; }
+  
   .landing-instagram-grid { grid-template-columns: 100%; }
-  .landing-portfolio-mosaic-grid { grid-template-columns: 100%; grid-auto-rows: auto; }
-  .portfolio-mosaic-item { grid-column: span 1 !important; grid-row: span 1 !important; }
-  .portfolio-mosaic-img-scaffold { aspect-ratio: 3 / 4; }
+  
+  /* Flat single vertical strip row stack on smartphone screen frames */
+  .landing-portfolio-mosaic-grid { grid-template-columns: 100%; }
 }

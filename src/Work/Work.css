@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght=0,300;0,500;1,300&family=DM+Mono:wght@300;400;500&family=Inter:wght=200;300;400;600&display=swap');
 
 /* ==========================================================================
    ── GENERAL SECTION FRAMEWORK ──
@@ -234,7 +234,8 @@
    ========================================================================== */
 @media (max-width: 1200px) {
   .archive-viewport-container {
-    padding: 120px 40px 60px 40px;
+    /* CHANGED: Boosted top padding to 180px to safely clear navigation overlays on tablets */
+    padding: 140px 40px 60px 40px;
   }
   .archive-title-serif {
     font-size: 3.6rem;
@@ -250,7 +251,8 @@
 
 @media (max-width: 768px) {
   .archive-viewport-container {
-    padding: 100px 20px 40px 20px;
+    /* CHANGED: Boosted top padding to 200px to accommodate mobile menu systems comfortably */
+    padding: 140px 20px 40px 20px;
   }
   .archive-title-serif {
     font-size: 2.8rem;
