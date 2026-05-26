@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/hacker-camerawork/static/css/main.fd3b5e7f.css",
-    "main.js": "/hacker-camerawork/static/js/main.be24e5b6.js",
+    "main.js": "/hacker-camerawork/static/js/main.2b58b152.js",
     "static/media/street33.jpg": "/hacker-camerawork/static/media/street33.2f21b131311780ac752c.jpg",
     "static/media/17.jpg": "/hacker-camerawork/static/media/17.9227ee6efd214f83984b.jpg",
     "static/media/deer3.jpg": "/hacker-camerawork/static/media/deer3.d46fb24e7c9bd0cbeba2.jpg",
@@ -78,10 +78,10 @@
     "static/media/slick.woff": "/hacker-camerawork/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/hacker-camerawork/index.html",
     "main.fd3b5e7f.css.map": "/hacker-camerawork/static/css/main.fd3b5e7f.css.map",
-    "main.be24e5b6.js.map": "/hacker-camerawork/static/js/main.be24e5b6.js.map"
+    "main.2b58b152.js.map": "/hacker-camerawork/static/js/main.2b58b152.js.map"
   },
   "entrypoints": [
     "static/css/main.fd3b5e7f.css",
-    "static/js/main.be24e5b6.js"
+    "static/js/main.2b58b152.js"
   ]
 }
