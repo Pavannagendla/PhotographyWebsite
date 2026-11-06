@@ -1,41 +1,48 @@
-import React from "react";
-/* CHANGED: Swapped out HashRouter for BrowserRouter */
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Work from "./pages/Work";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
-import HomePage from "./Home/HomePage";
-import Work from "./Work/Work";
-import About from "./About/About";
-import Contact from "./Contact/Contact";
-import CombinedPage from "./Common/CombinedPage";
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
-function App() {
+export function AppRoutes() {
   return (
-    /* CHANGED: Added the repository name as the basename so GitHub Pages can route cleanly */
-    <Router basename="/hacker-camerawork">
-      {/* THE TECHNICAL UTILITY RIBBON LAYER */}
-      <Header />
-      
-      {/* LENS DIAL HUD OVERLAY OVERRIDES */}
-      <Navbar />
-
-      {/* CORE DISPLAY WINDOW PORTAL */}
-      <div className="portfolio-master-frame">
+    <>
+      <ScrollToTop />
+      <a className="skip-link" href="#main">Skip to content</a>
+      <Nav />
+      <main id="main">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/overview" element={<CombinedPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Old "Portfolio" page from the previous site */}
+          <Route path="/overview" element={<Navigate to="/work" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-
+      </main>
       <Footer />
-    </Router>
+    </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter basename={process.env.PUBLIC_URL || "/"}>
+      <AppRoutes />
+    </BrowserRouter>
+  );
+}
