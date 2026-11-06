@@ -27,6 +27,13 @@ Exhibitions, contact details and social links live in `src/data/site.js`.
 
 ## Deploy
 
+Publishing is automatic: every push or merge to `main` runs the
+**Deploy to GitHub Pages** workflow (`.github/workflows/deploy.yml`), which runs the
+tests, builds the site and publishes it to the `gh-pages` branch. The site updates
+a minute or two later. You can watch progress (or re-run it) in the repository's **Actions** tab.
+
+To publish manually from your computer instead:
+
 ```bash
 npm run deploy     # builds and publishes to the gh-pages branch
 ```
