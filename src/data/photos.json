@@ -220,16 +220,6 @@
     "featured": false
   },
   {
-    "id": "birds-10",
-    "title": "Openbill in flight",
-    "category": "Birds",
-    "src": "photos/birds/10.jpg",
-    "thumb": "photos/birds/thumbs/10.jpg",
-    "width": 2400,
-    "height": 1600,
-    "featured": false
-  },
-  {
     "id": "wildlife-bear4",
     "title": "Sloth bear",
     "category": "Wildlife",
@@ -276,16 +266,6 @@
     "src": "photos/wildlife/gardenlizard5.jpg",
     "thumb": "photos/wildlife/thumbs/gardenlizard5.jpg",
     "width": 1601,
-    "height": 2400,
-    "featured": false
-  },
-  {
-    "id": "birds-17",
-    "title": "Painted stork",
-    "category": "Birds",
-    "src": "photos/birds/17.jpg",
-    "thumb": "photos/birds/thumbs/17.jpg",
-    "width": 1600,
     "height": 2400,
     "featured": false
   },
@@ -400,16 +380,6 @@
     "featured": false
   },
   {
-    "id": "birds-48",
-    "title": "Courtship",
-    "category": "Birds",
-    "src": "photos/birds/48.jpg",
-    "thumb": "photos/birds/thumbs/48.jpg",
-    "width": 1601,
-    "height": 2400,
-    "featured": false
-  },
-  {
     "id": "wildlife-monkey",
     "title": "Bonnet macaque",
     "category": "Wildlife",
@@ -437,16 +407,6 @@
     "thumb": "photos/portraits/thumbs/vaishu.jpg",
     "width": 867,
     "height": 1300,
-    "featured": false
-  },
-  {
-    "id": "birds-35",
-    "title": "Jacana on the pond",
-    "category": "Birds",
-    "src": "photos/birds/35.jpg",
-    "thumb": "photos/birds/thumbs/35.jpg",
-    "width": 2400,
-    "height": 1600,
     "featured": false
   },
   {
@@ -530,26 +490,6 @@
     "featured": false
   },
   {
-    "id": "wildlife-ele",
-    "title": "Young elephant",
-    "category": "Wildlife",
-    "src": "photos/wildlife/ele.jpg",
-    "thumb": "photos/wildlife/thumbs/ele.jpg",
-    "width": 1600,
-    "height": 2400,
-    "featured": false
-  },
-  {
-    "id": "nature-mrng1",
-    "title": "Sunrise over the city",
-    "category": "Nature",
-    "src": "photos/nature/mrng1.jpg",
-    "thumb": "photos/nature/thumbs/mrng1.jpg",
-    "width": 2400,
-    "height": 1601,
-    "featured": false
-  },
-  {
     "id": "birds-42",
     "title": "Babbler on the wall",
     "category": "Birds",
@@ -567,36 +507,6 @@
     "thumb": "photos/wildlife/thumbs/gardenlizard1.jpg",
     "width": 866,
     "height": 1300,
-    "featured": false
-  },
-  {
-    "id": "street-street3",
-    "title": "Walking by",
-    "category": "Street",
-    "src": "photos/street/street3.jpg",
-    "thumb": "photos/street/thumbs/street3.jpg",
-    "width": 1600,
-    "height": 2400,
-    "featured": false
-  },
-  {
-    "id": "portraits-bro",
-    "title": "Red shirt",
-    "category": "Portraits",
-    "src": "photos/portraits/bro.jpg",
-    "thumb": "photos/portraits/thumbs/bro.jpg",
-    "width": 867,
-    "height": 1300,
-    "featured": false
-  },
-  {
-    "id": "birds-5",
-    "title": "In the doorway",
-    "category": "Birds",
-    "src": "photos/birds/5.jpg",
-    "thumb": "photos/birds/thumbs/5.jpg",
-    "width": 1601,
-    "height": 2400,
     "featured": false
   },
   {
@@ -620,26 +530,6 @@
     "featured": false
   },
   {
-    "id": "portraits-pandu",
-    "title": "Checked shirt",
-    "category": "Portraits",
-    "src": "photos/portraits/pandu.jpg",
-    "thumb": "photos/portraits/thumbs/pandu.jpg",
-    "width": 1600,
-    "height": 2400,
-    "featured": false
-  },
-  {
-    "id": "birds-14",
-    "title": "Over the wetland",
-    "category": "Birds",
-    "src": "photos/birds/14.jpg",
-    "thumb": "photos/birds/thumbs/14.jpg",
-    "width": 2400,
-    "height": 1600,
-    "featured": false
-  },
-  {
     "id": "wildlife-greylangur-3",
     "title": "Grey langur",
     "category": "Wildlife",
@@ -657,36 +547,6 @@
     "thumb": "photos/birds/thumbs/51.jpg",
     "width": 1601,
     "height": 2400,
-    "featured": false
-  },
-  {
-    "id": "nature-view",
-    "title": "Valley view",
-    "category": "Nature",
-    "src": "photos/nature/view.jpg",
-    "thumb": "photos/nature/thumbs/view.jpg",
-    "width": 1300,
-    "height": 867,
-    "featured": false
-  },
-  {
-    "id": "portraits-birthday1",
-    "title": "First birthday",
-    "category": "Portraits",
-    "src": "photos/portraits/birthday1.jpg",
-    "thumb": "photos/portraits/thumbs/birthday1.jpg",
-    "width": 2400,
-    "height": 1601,
-    "featured": false
-  },
-  {
-    "id": "nature-flower2",
-    "title": "A single bloom",
-    "category": "Nature",
-    "src": "photos/nature/flower2.jpg",
-    "thumb": "photos/nature/thumbs/flower2.jpg",
-    "width": 866,
-    "height": 1300,
     "featured": false
   }
 ]
