@@ -1,51 +1,51 @@
-import React from 'react';
-import './Footer.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { asset, site } from "../data/site";
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
+export default function Footer() {
   return (
-    <footer className="portfolio-terminal-footer">
-      <div className="footer-structural-max">
-        
-        {/* LEFT CODE: RIGHTS & ARCHIVE IDENTIFICATION */}
-        <div className="footer-meta-left">
-          <p className="copyright-mono">
-            &copy; {currentYear} HACKER_CAMERAWORK // ALL RIGHTS RESERVED.
+    <footer className="footer">
+      <div className="container footer__grid">
+        <div className="footer__brand">
+          <img src={asset("logo-light.png")} alt={site.brand} width="720" height="323" loading="lazy" />
+          <p>
+            {site.tagline} by {site.name}.<br />
+            Based in {site.location}.
           </p>
         </div>
 
-        {/* RIGHT CODE: EXPORT ARCHIVE CHANNELS */}
-        <div className="footer-links-right">
-          <a 
-            href="https://www.instagram.com/hacker_camerawork" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="footer-editorial-link"
-          >
-            INSTAGRAM <span className="arrow-diagonal">↗</span>
-          </a>
-          <a 
-            href="https://unsplash.com/@hacker_camerawork" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="footer-editorial-link"
-          >
-            UNSPLASH <span className="arrow-diagonal">↗</span>
-          </a>
-          <a 
-            href="https://www.threads.net/@hacker_camerawork" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="footer-editorial-link"
-          >
-            THREADS <span className="arrow-diagonal">↗</span>
-          </a>
+        <div>
+          <h2 className="footer__heading">Explore</h2>
+          <ul className="footer__list">
+            <li><Link to="/work">Work</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </div>
 
+        <div>
+          <h2 className="footer__heading">Get in touch</h2>
+          <ul className="footer__list">
+            <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+            <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="footer__heading">Follow</h2>
+          <ul className="footer__list">
+            {site.socials.map((s) => (
+              <li key={s.label}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer">{s.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div className="container footer__base">
+        <span>© {new Date().getFullYear()} {site.name}. All photographs are copyrighted and may not be used without permission.</span>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

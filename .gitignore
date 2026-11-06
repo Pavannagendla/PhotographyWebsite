@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Full-resolution originals (keep these on your computer, not in the repo)
+/originals
